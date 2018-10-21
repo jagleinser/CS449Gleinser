@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gridview"
-    android:layout_width="400dp"
-    android:layout_height="400dp"
-    android:columnWidth="90dp"
-    android:numColumns="3"
-    android:verticalSpacing="10dp"
-    android:horizontalSpacing="10dp"
-    android:stretchMode="columnWidth"
-    android:gravity="center"
-    >
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="354dp"
+        android:layout_height="285dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp">
 
 
+    </GridView>
 
-</GridView>
+    <GridView
+        android:id="@+id/gridviewcomplete"
+        android:layout_width="37dp"
+        android:layout_height="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="135dp"
+        android:layout_marginStart="140dp" />
 
+
+</RelativeLayout>

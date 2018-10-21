@@ -1,8 +1,13 @@
 package com.example.jakeg.slidingpuzzlehero1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -29,6 +34,7 @@ public class activity_5x5 extends AppCompatActivity {
         gridview.setNumColumns(5);
         imageAdapter= new ImageAdapter(this);
         gridview.setAdapter(imageAdapter);
+
 
 
         randomizeView(imageAdapter);
@@ -137,17 +143,6 @@ public class activity_5x5 extends AppCompatActivity {
                             invalidMove();
                 }
 
-
-
-
-
-
-
-
-
-
-
-
             }
         });
     }
@@ -202,7 +197,8 @@ public class activity_5x5 extends AppCompatActivity {
     public void swap(int pos, ImageAdapter xAdapter)
     {
 
-
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.buttonsound2);
+        mediaPlayer.start();
 
         int val = xAdapter.mThumbIds2[masterPos];
         xAdapter.mThumbIds2[masterPos] = xAdapter.mThumbIds2[pos];
@@ -274,5 +270,28 @@ public class activity_5x5 extends AppCompatActivity {
         }
 
         return array;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.reset:
+                randomizeView(imageAdapter);
+                return true;
+            case R.id.action_settings:
+                Intent intent = new Intent(this, about.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

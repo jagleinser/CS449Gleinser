@@ -2,13 +2,22 @@ package com.example.jakeg.slidingpuzzlehero1;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+
 
 import java.util.Random;
 
@@ -20,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
         ImageAdapter imageAdapter;
 
 
-        @Override
+
+
+    @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
@@ -31,17 +42,21 @@ public class MainActivity extends AppCompatActivity {
             imageAdapter= new ImageAdapter(this);
             gridview.setAdapter(imageAdapter);
 
-            final Integer [] originalSet = imageAdapter.mThumbIds;
+
+
+
 
 
             randomizeView(imageAdapter);
 
-
+            final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.buttonsound);
             gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v,
                                         int position, long id) {
 
                     counter++;
+
+
 
 
 
@@ -172,7 +187,8 @@ public class MainActivity extends AppCompatActivity {
 
         public void swap(int pos, ImageAdapter xAdapter)
         {
-
+            MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.buttonsound2);
+            mediaPlayer.start();
 
             int val = xAdapter.mThumbIds[masterPos];
             xAdapter.mThumbIds[masterPos] = xAdapter.mThumbIds[pos];
@@ -241,6 +257,30 @@ public class MainActivity extends AppCompatActivity {
 
             return array;
         }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.reset:
+                randomizeView(imageAdapter);
+                return true;
+            case R.id.action_settings:
+                Intent intent = new Intent(this, about.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 
 
