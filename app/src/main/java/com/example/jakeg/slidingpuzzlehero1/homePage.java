@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class homePage extends AppCompatActivity {
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -70,7 +72,7 @@ public class homePage extends AppCompatActivity {
     public void switchActivity(View v)
     {
         if (v == findViewById(R.id.button3x3)) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, activity_3x3.class);
             startActivity(intent);
         }
 
@@ -94,10 +96,15 @@ public class homePage extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.reset:
                 return true;
-            case R.id.action_settings:
+            case R.id.about:
                 Intent intent = new Intent(this, about.class);
                 startActivity(intent);
                 return true;
+            case R.id.settings:
+                Intent settingsIntent = new Intent(this, settings.class);
+                startActivity(settingsIntent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

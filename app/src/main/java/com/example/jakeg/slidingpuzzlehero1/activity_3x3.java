@@ -1,13 +1,11 @@
 package com.example.jakeg.slidingpuzzlehero1;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,13 +13,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
 
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class activity_3x3 extends AppCompatActivity {
 
         public int counter = 0;
         public int masterPos = 8;
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_3x3);
 
 
 
@@ -71,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         if(right == masterPos || down == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
 
                     }
@@ -80,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         if(right == masterPos || left == masterPos || down == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
 
                     }
@@ -89,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         if(left == masterPos || down == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
 
@@ -98,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         if(right == masterPos || up == masterPos || down == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
                     if(position == 4)
@@ -106,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                         if(right == masterPos || up == masterPos || down == masterPos || left == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
                     if(position == 5)
@@ -114,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         if(left == masterPos || up == masterPos || down == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
 
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         if(right == masterPos || up == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
                     if(position == 7)
@@ -131,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         if(right == masterPos || left == masterPos || up == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
                     if(position == 8)
@@ -139,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         if(left == masterPos || up  == masterPos)
                             swap(position, imageAdapter);
                         else
-                            Toast.makeText(MainActivity.this, "Invalid Move",
+                            Toast.makeText(activity_3x3.this, "Invalid Move",
                                     Toast.LENGTH_SHORT).show();
                     }
 
@@ -196,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(checkWin(xAdapter))
             {
-                Toast.makeText(MainActivity.this, "You won",
+                Toast.makeText(activity_3x3.this, "You won",
                         Toast.LENGTH_SHORT).show();
 
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
@@ -270,12 +266,17 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.reset:
-                randomizeView(imageAdapter);
                 return true;
-            case R.id.action_settings:
+            case R.id.about:
                 Intent intent = new Intent(this, about.class);
                 startActivity(intent);
                 return true;
+            case R.id.settings:
+                Intent settingsIntent = new Intent(this, settings.class);
+                startActivity(settingsIntent);
+                return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }

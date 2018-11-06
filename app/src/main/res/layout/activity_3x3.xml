@@ -6,8 +6,8 @@
 
     <GridView
         android:id="@+id/gridview"
-        android:layout_width="354dp"
-        android:layout_height="285dp"
+        android:layout_width="369dp"
+        android:layout_height="400dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"

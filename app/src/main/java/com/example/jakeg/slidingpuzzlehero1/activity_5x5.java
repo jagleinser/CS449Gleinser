@@ -26,7 +26,7 @@ public class activity_5x5 extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_3x3);
 
 
 
@@ -284,12 +284,20 @@ public class activity_5x5 extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.reset:
-                randomizeView(imageAdapter);
                 return true;
-            case R.id.action_settings:
+            case R.id.about:
                 Intent intent = new Intent(this, about.class);
                 startActivity(intent);
                 return true;
+            case R.id.settings:
+                Intent settingsIntent = new Intent(this, settings.class);
+                startActivity(settingsIntent);
+                return true;
+
+
+
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }
