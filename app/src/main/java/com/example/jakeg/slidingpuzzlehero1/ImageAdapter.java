@@ -11,6 +11,7 @@ public class ImageAdapter extends BaseAdapter {
 
 
 
+
     public ImageAdapter(Context c) {
 
         mContext = c;
@@ -67,6 +68,8 @@ public class ImageAdapter extends BaseAdapter {
 
 
     public Integer[] mThumbIds = {
+
+
             R.drawable.donkeypart1,
             R.drawable.donkeypart2,
             R. drawable.donkeypart3,

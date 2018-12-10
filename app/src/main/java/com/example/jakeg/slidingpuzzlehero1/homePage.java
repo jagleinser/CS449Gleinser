@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -28,8 +29,16 @@ public class homePage extends AppCompatActivity {
         mediaPlayer.start();
 
 
+
+
         Button begin3x3 = (Button) findViewById(R.id.button3x3);
+        begin3x3.setBackgroundResource(R.drawable.img3x3);
         Button begin5x5 = (Button) findViewById(R.id.button5x5);
+        begin5x5.setBackgroundResource(R.drawable.img5x5);
+
+        ImageView sph = (ImageView) findViewById(R.id.sph);
+        sph.setBackgroundResource(R.drawable.sph500);
+
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
         int counter = pref.getInt("scoreKey3", 0);

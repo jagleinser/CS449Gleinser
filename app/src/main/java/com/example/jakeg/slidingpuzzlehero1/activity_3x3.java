@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -42,8 +44,44 @@ public class activity_3x3 extends AppCompatActivity {
 
 
 
+            Random r = new Random();
+            int randomNumber = r.nextInt(5);
+            if (randomNumber > 1)
+            {
+                imageAdapter.mThumbIds[0] = R.drawable.b1;
+                imageAdapter.mThumbIds[1] = R.drawable.b2;
+                imageAdapter.mThumbIds[2] = R.drawable.b3;
+                imageAdapter.mThumbIds[3] = R.drawable.b4;
+                imageAdapter.mThumbIds[4] = R.drawable.b5;
+                imageAdapter.mThumbIds[5] = R.drawable.b6;
+                imageAdapter.mThumbIds[6] = R.drawable.b7;
+                imageAdapter.mThumbIds[7] = R.drawable.b8;
+                imageAdapter.mThumbIds[8] = R.color.colorPrimaryDark;
+
+
+
+
+            }
 
             randomizeView(imageAdapter);
+
+            final TextView cdTimer = findViewById(R.id.countDown);
+
+
+        new CountDownTimer(6000000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+
+                cdTimer.setText("Seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                cdTimer.setText("Oops, you lose!");
+            }
+        }.start();
+
+
 
             final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.buttonsound);
             gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
